@@ -1,0 +1,20 @@
+apiVersion: certmanager.k8s.io/v1alpha1
+kind: Certificate
+metadata:
+  name: cheng-bakery-tls
+spec:
+  secretName: cheng-bakery-com
+  issuerRef:
+    name: letsencrypt-prod
+    kind: ClusterIssuer
+  commonName: cheng-bakery.com
+  dnsNames:
+    - cheng-bakery.com
+    - www.cheng-bakery.com
+  acme:
+    config:
+      - http01:
+          ingressClass: nginx
+        domains:
+          - cheng-bakery.com
+          - www.cheng-bakery.com
