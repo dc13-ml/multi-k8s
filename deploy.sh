@@ -3,10 +3,11 @@ docker build -t dc13ml/multi-server:latest -t dc13ml/multi-server:$SHA -f ./serv
 docker build -t dc13ml/multi-worker:latest -t dc13ml/multi-worker:$SHA -f ./worker/Dockerfile ./worker
 
 docker push dc13ml/multi-client:latest
-docker push dc13ml/multi-client:$SHA
 docker push dc13ml/multi-server:latest
-docker push dc13ml/multi-server:$SHA
 docker push dc13ml/multi-worker:latest
+
+docker push dc13ml/multi-client:$SHA
+docker push dc13ml/multi-server:$SHA
 docker push dc13ml/multi-worker:$SHA
 
 kubectl apply -f k8s
